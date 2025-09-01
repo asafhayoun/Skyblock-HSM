@@ -25,7 +25,7 @@ public class HSM implements ModInitializer {
 	public static boolean compareComponents(ComponentMap component1, ComponentMap component2) {
 		// bit flags:
 		// 1st digit -> if any other tag was different
-		// 2nd digit -> DAMAGE
+		// 2nd digit -> DAMAGE or LORE
 		// 3rd digit -> CUSTOM_DATA
 		byte x = 0;
 
@@ -33,9 +33,10 @@ public class HSM implements ModInitializer {
 			for (Component<?> j : component2) {
 				if (i.type() == j.type()) {
 					if (!Objects.equals(i.value().toString(), j.value().toString())) {
-						if (i.type().toString().equals("minecraft:damage")) {
+						String tagName = i.type().toString();
+						if (tagName.equals("minecraft:damage") || tagName.equals("minecraft:lore")) {
 							x |= 2;
-						} else if (i.type().toString().equals("minecraft:custom_data")) {
+						} else if (tagName.equals("minecraft:custom_data")) {
 							//HSM.LOGGER.info(i.value().toString());
 							//HSM.LOGGER.info(j.value().toString());
 							x |= (byte) (compareUUIDs(i.value().toString(),j.value().toString()) ? 4 : 0);
