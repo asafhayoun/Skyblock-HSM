@@ -39,9 +39,9 @@ public class HSM implements ModInitializer {
 						} else if (tagName.equals("minecraft:custom_data")) {
 							//HSM.LOGGER.info(i.value().toString());
 							//HSM.LOGGER.info(j.value().toString());
-							x |= (byte) (compareUUIDs(i.value().toString(),j.value().toString()) ? 4 : 0);
+							x |= (byte) (compareUUIDs(tagName,j.value().toString()) ? 4 : 0);
 						} else {
-                            //LOGGER.info("{} : {} != {}", i.type().toString(), i.value().toString(), j.value().toString());
+                            //HSM.LOGGER.info("{} : {} != {}", i.type().toString(), i.value().toString(), j.value().toString());
 							x |= 1;
 						}
 					}
