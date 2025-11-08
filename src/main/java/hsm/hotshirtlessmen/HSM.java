@@ -39,7 +39,7 @@ public class HSM implements ModInitializer {
 						} else if (tagName.equals("minecraft:custom_data")) {
 							//HSM.LOGGER.info(i.value().toString());
 							//HSM.LOGGER.info(j.value().toString());
-							x |= (byte) (compareUUIDs(tagName,j.value().toString()) ? 4 : 0);
+							x |= (byte) (compareUUIDs(i.value().toString(),j.value().toString()) ? 4 : 0);
 						} else {
                             //HSM.LOGGER.info("{} : {} != {}", i.type().toString(), i.value().toString(), j.value().toString());
 							x |= 1;
@@ -54,9 +54,11 @@ public class HSM implements ModInitializer {
 
 	public static boolean compareUUIDs(String str1, String str2) {
 		try {
-			return getUUID(str1).equals(getUUID(str2)) && getUUID(str1).length() == 36;
+            //HSM.LOGGER.info(getUUID(str1));
+            //HSM.LOGGER.info(getUUID(str2));
+			return getUUID(str1).equals(getUUID(str2));
 		} catch (Exception e) {
-			LOGGER.error(String.valueOf(e));
+			HSM.LOGGER.error(String.valueOf(e));
 			return false;
 		}
 	}

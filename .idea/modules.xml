@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Hot-Shirtless-Men.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Hot-Shirtless-Men.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Hot-Shirtless-Men.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Hot-Shirtless-Men.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hsm.hotshirtlessmen.Hot-Shirtless-Men.main.iml" filepath="$PROJECT_DIR$/.idea/modules/hsm.hotshirtlessmen.Hot-Shirtless-Men.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hsm.hotshirtlessmen.Hot-Shirtless-Men.test.iml" filepath="$PROJECT_DIR$/.idea/modules/hsm.hotshirtlessmen.Hot-Shirtless-Men.test.iml" />
     </modules>
   </component>
 </project>
