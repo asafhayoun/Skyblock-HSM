@@ -1,10 +1,10 @@
 package hsm.hotshirtlessmen.mixin;
 
 import hsm.hotshirtlessmen.HSM;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerInteractionManager;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.MultiPlayerGameMode;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -12,26 +12,26 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ClientPlayerInteractionManager.class)
+@Mixin(MultiPlayerGameMode.class)
 public class ClientPlayerInteractionManagerMixin {
 
     @Shadow
-    private ItemStack selectedStack;
+    private ItemStack destroyingItem;
 
     @Final
     @Shadow
-    private MinecraftClient client;
+    private Minecraft minecraft;
 
     @Shadow
-    private BlockPos currentBreakingPos;
+    private BlockPos destroyBlockPos;
 
-    @Inject(at = @At("RETURN"), method = "isCurrentlyBreaking", cancellable = true)
+    @Inject(at = @At("RETURN"), method = "sameDestroyTarget", cancellable = true)
     private void itemStackCompare(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        if (!cir.getReturnValue() && pos.equals(currentBreakingPos)) {
-            assert client.player != null;
-            ItemStack hand = client.player.getMainHandStack();
-            if (HSM.compareComponents(hand.getComponents(),selectedStack.getComponents())) {
-                selectedStack = hand;
+        if (!cir.getReturnValue() && pos.equals(destroyBlockPos)) {
+            assert minecraft.player != null;
+            ItemStack hand = minecraft.player.getMainHandItem();
+            if (HSM.compareComponents(hand.getComponents(),destroyingItem.getComponents())) {
+                destroyingItem = hand;
                 cir.setReturnValue(true);
             } else {
                 cir.setReturnValue(false);
