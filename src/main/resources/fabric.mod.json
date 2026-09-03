@@ -25,7 +25,7 @@
 	"accessWidener": "hotshirtlessmen.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.19.2",
-		"minecraft": "~26.1.2",
+		"minecraft": ">=26.1 <=26.3",
 		"java": ">=25"
 	},
 	"suggests": {

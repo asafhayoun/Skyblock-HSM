@@ -13,8 +13,6 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Objects;
-
 public class HSM implements ModInitializer {
 	public static final String MOD_ID = "hotshirtlessmen";
 
@@ -71,7 +69,6 @@ public class HSM implements ModInitializer {
             //HSM.LOGGER.info(getUUID(str1));
             //HSM.LOGGER.info(getUUID(str2));
 			String uuid1 = getUUID(nbt1);
-			LOGGER.info(uuid1, getUUID(nbt2));
 			return uuid1 != null && uuid1.equals(getUUID(nbt2));
 		} catch (Exception e) {
 			HSM.LOGGER.error(String.valueOf(e));
