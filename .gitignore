@@ -12,7 +12,8 @@ gradle/wrapper/gradle-wrapper.jar
 
 # idea
 
-.idea/
+.idea/*
+!.idea/misc.xml
 *.iml
 *.ipr
 *.iws
